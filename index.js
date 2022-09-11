@@ -46,7 +46,7 @@ function getRequest(url) {
 
 async function sendQuote(chatRoom){
 
-    let quotesData =  await s3.getObject({Bucket: 'eatluh.whyys.xyz',Key: process.env.S3_QUOTESLIB}).promise();
+    let quotesData =  await s3.getObject({Bucket: process.env.S3_BUCKET, Key: process.env.S3_QUOTESLIB}).promise();
     let quotesDataRows = quotesData.Body.toString().split(/\r?\n/);
     let quotesRow = between(0, quotesDataRows.length - 1) 
     let reply = quotesDataRows[quotesRow]
