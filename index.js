@@ -136,7 +136,7 @@ exports.handler = async (event) => {
         if (data.message.location){
             
             let mapUrl = "https://atlas.microsoft.com/search/poi/json?api-version=1.0&query=food&limit=35&radius=100000"
-            mapUrl += "&subscription-key=J4iSlccEKKsQyVN32eOa9-yDnRAQ4Jp5l2p7QiHPk_I"
+            mapUrl += "&subscription-key=" + process.env.AZURE_KEY
             mapUrl += "&lat=" + data.message.location.latitude
             mapUrl += "&lon=" + data.message.location.longitude
             
