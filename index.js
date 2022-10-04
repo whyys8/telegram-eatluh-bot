@@ -125,7 +125,7 @@ async function sendDefaultReply(chatRoom, newChat = false, msg=''){
     
     
     if (newChat){
-        await telegramBot.sendMessage(chatRoom, 'Hey there, <b><u>share with me your location</u></b> now so I know how to help you.', {"parse_mode":"HTML"});
+        await telegramBot.sendMessage(chatRoom, 'Hey there, <b><u>share with me your location</u></b> so I know how to help you.', {"parse_mode":"HTML"});
         
         await telegramBot.sendMessage(chatRoom, 'Whatever that you\'ve just said, I cannot understand and can\'t give any constructive reply yet, so.. may I interest you with a sarcastic comment instead...', {"parse_mode":"HTML"})
         await new Promise(resolve => setTimeout(resolve, 1000));
