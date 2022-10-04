@@ -113,8 +113,12 @@ async function sendDefaultReply(chatRoom, newChat = false, msg=''){
     console.log("sentiment", sentiment)
     if (sentiment.sentiment == 'NEGATIVE') {
         //await telegramBot.sendMessage(chatRoom, 'Hey, OMG! That attitude is uncalled for. Let\'s try again with a more polite tone..', {"parse_mode":"HTML"}) 
-        let sticker = S3_ASSETSURL + 'eatluh/slaps.webp'
-        await telegramBot.sendSticker(chatRoom, sticker);
+        // let sticker = process.env.S3_ASSETSURL + 'eatluh/slaps.webp'
+        // await telegramBot.sendSticker(chatRoom, sticker);
+        
+        let sticker = process.env.S3_ASSETSURL + 'eatluh/slaps.gif'
+        await telegramBot.sendAnimation(chatRoom, sticker);
+        
         await telegramBot.sendMessage(chatRoom, 'That attitude is uncalled for!');
         return;
     }
