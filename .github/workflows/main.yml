@@ -1,0 +1,35 @@
+name: Deploy to AWS Lambda
+on:
+  # Trigger the workflow on push or pull request,
+  # but only for the main branch
+  push:
+    branches:
+      - main
+jobs:
+
+  deploy_source:
+    name: build and deploy
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout source code
+        uses: actions/checkout@v1
+  
+      - name: setup node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16.x
+
+      - name: npm install
+        run: npm install
+        
+      - name: zip the files
+        run: zip -r deployment.zip *
+        
+      - name: deploy to lambda
+        uses: appleboy/lambda-action@master
+        with:
+          aws_access_key_id: ${{ secrets.AWS_KEY }}
+          aws_secret_access_key: ${{ secrets.AWS_SECRET }}
+          aws_region: ap-southeast-1
+          function_name: ${{ secrets.LAMBDA_FX }}
+          zip_file: deployment.zip
