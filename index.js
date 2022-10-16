@@ -256,8 +256,7 @@ exports.handler = async (event) => {
                 userProfile.last_location = chatTime
             }
             
-            
-            
+            console.log('location',postal,mapUrl)
         }
         
         if (msgType == 'TEXT' && msgContent == '/start') {
